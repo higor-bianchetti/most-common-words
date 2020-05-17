@@ -1,13 +1,13 @@
 <template>
   <div class="pill">
-    <span class="name">{{name}}</span>
-    <span class="amount">{{amount}}</span>
+    <span class="name">{{ name }}</span>
+    <span class="amount">{{ amount }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["name", "amount"]
+  props: ['name', 'amount'],
 };
 </script>
 
@@ -28,11 +28,13 @@ export default {
 
 .pill .amount {
   margin-left: 10px;
-  padding: 5px;
+  padding: 3px 5px;
   border-radius: 50%;
   background-color: #ffffff;
   color: #3a3335;
   font-size: 12px;
   font-weight: bold;
+  min-width: 25px;
+  text-align: center;
 }
 </style>
