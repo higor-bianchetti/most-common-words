@@ -13,35 +13,42 @@
       />
     </v-form>
     <div class="pills">
-      <Pill v-for="word in groupedWords" :key="word.name" :name="word.name" :amount="word.amount" />
+      <Pill
+        v-for="word in groupedWords"
+        :key="word.name"
+        :name="word.name"
+        :amount="word.amount"
+      />
     </div>
   </v-container>
 </template>
 
 <script>
-import Pill from "./Pill";
+import { ipcRenderer } from 'electron';
+import Pill from './Pill';
 
 export default {
   components: {
-    Pill
+    Pill,
   },
 
   data: function() {
     return {
       files: [],
-      groupedWords: [
-        { name: "word1", amount: 1200 },
-        { name: "word2", amount: 900 },
-        { name: "word3", amount: 750 }
-      ]
+      groupedWords: [],
     };
   },
 
   methods: {
     processSubstitles() {
-      console.log(this.files);
-    }
-  }
+      const paths = this.files.map((file) => file.path);
+
+      ipcRenderer.send('process-subtitles', paths);
+      ipcRenderer.on('process-subtitles', (event, resp) => {
+        this.groupedWords = resp;
+      });
+    },
+  },
 };
 </script>
 
