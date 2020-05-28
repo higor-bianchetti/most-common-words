@@ -1,5 +1,7 @@
 # most-common-words
 
+Upload a subtitle file and the app will count the words of the subtitle(s) and show them in crescent order.
+
 ## Preview
 ![Image Preview](./preview.png)
 
