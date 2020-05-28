@@ -1,5 +1,8 @@
 # most-common-words
 
+## Preview
+![Image Preview](./preview.png)
+
 ## Project setup
 ```
 yarn install
